@@ -25,7 +25,7 @@ const URLMessageStatus = URLBase + "/api/send/query/${messageID}"
 const URLCreateQrcode = URLBase + "/api/fun/create/qrcode"
 
 // URLQueryWxUser 查询App的关注用户
-const URLQueryWxUser = URLBase + "/api/fun/wxuser"
+const URLQueryWxUser = URLBase + "/api/fun/wxuser/v2"
 
 // SendMessage 发送消息
 func SendMessage(message *model.Message) ([]model.SendMsgResult, error) {
@@ -69,8 +69,8 @@ func SendMessage(message *model.Message) ([]model.SendMsgResult, error) {
 // QueryMessageStatus 查询消息发送状态
 func QueryMessageStatus(messageID int) (model.Result, error) {
 	var result model.Result
-	url := strings.ReplaceAll(URLMessageStatus, "${messageID}", strconv.Itoa(messageID))
-	resp, err := http.Get(url)
+	link := strings.ReplaceAll(URLMessageStatus, "${messageID}", strconv.Itoa(messageID))
+	resp, err := http.Get(link)
 	if err != nil {
 		return result, model.NewSDKError(err)
 	}

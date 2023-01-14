@@ -53,6 +53,6 @@ opts := []wxpusher.QueryWxUserOption{
     wxpusher.WithQueryPageSize(5),
     wxpusher.WithQueryUid("uid"),
 }
-result, err := wxpusher.QueryWxUser(opts)
+result, err := wxpusher.QueryWxUser(opts...)
 fmt.Println(result, err)
 ```
